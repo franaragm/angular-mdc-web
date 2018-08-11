@@ -39,6 +39,20 @@
           </tr>
         </tbody>
       </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Events</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>change: MdcChipSetChange</td>
+            <td>Emitted when a chip is interacted with.</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h3>mdc-chip</h3>
       <table>
@@ -76,20 +90,28 @@
         </thead>
         <tbody>
           <tr>
-            <td>selectionChange: MdcChipSelectionChange</td>
+            <td>selectionChange: MdcChipInteractionEvent</td>
             <td>Emitted when the chip is selected or deselected.</td>
+          </tr>
+          <tr>
+            <td>removed: MdcChipInteractionEvent</td>
+            <td>Emitted when a chip is removed from a set.</td>
+          </tr>
+          <tr>
+            <td>trailingIconInteraction: void</td>
+            <td>Emitted when a chip trailing icon is interacted with.</td>
           </tr>
         </tbody>
       </table>
 
-      <h3>mdc-chip-text, mdcChipText</h3>
+      <h3>mdc-chip-text, [mdcChipText]</h3>
       <table>
         <tr>
-          <td>Indicates the text content of the chip.</td>
+          <td>Optional. Indicates the text content of the chip.</td>
         </tr>
       </table>
 
-      <h3>mdc-chip-icon, mdcChipIcon</h3>
+      <h3>mdc-chip-icon, [mdcChipIcon]</h3>
       <table>
         <thead>
           <tr>
@@ -136,12 +158,20 @@
   <div class="demo-content">
     <h3 class="demo-content__headline">Input Chips</h3>
     <div class="demo-content--row">
-      <mdc-chip-set #inputchipset [input]="true">
-        <mdc-chip label="Jane Smith">
+      <mdc-chip-set #inputchipset input (change)="onChipSetChange($event)">
+        <mdc-chip label="Alice">
           <mdc-chip-icon leading>face</mdc-chip-icon>
           <mdc-chip-icon trailing>cancel</mdc-chip-icon>
         </mdc-chip>
-        <mdc-chip label='James Bond'>
+        <mdc-chip label="Bob">
+          <mdc-chip-icon leading>face</mdc-chip-icon>
+          <mdc-chip-icon trailing>cancel</mdc-chip-icon>
+        </mdc-chip>
+        <mdc-chip label='Charlie'>
+          <mdc-chip-icon leading>face</mdc-chip-icon>
+          <mdc-chip-icon trailing>cancel</mdc-chip-icon>
+        </mdc-chip>
+        <mdc-chip label='David'>
           <mdc-chip-icon leading>face</mdc-chip-icon>
           <mdc-chip-icon trailing>cancel</mdc-chip-icon>
         </mdc-chip>
@@ -151,7 +181,7 @@
   <div class="demo-content">
     <h3 class="demo-content__headline">Choice Chips</h3>
     <div class="demo-content--row">
-      <mdc-chip-set [choice]="true">
+      <mdc-chip-set choice>
         <mdc-chip>
           <mdc-chip-text>Get Directions</mdc-chip-text>
         </mdc-chip>
@@ -167,7 +197,7 @@
   <div class="demo-content">
     <h3 class="demo-content__headline">Filter Chips</h3>
     <div class="demo-content--row">
-      <mdc-chip-set [filter]="true">
+      <mdc-chip-set filter>
         <mdc-chip>
           <mdc-chip-text>Tops</mdc-chip-text>
         </mdc-chip>
@@ -184,7 +214,7 @@
     </div>
 
     <div class="demo-content--row">
-      <mdc-chip-set [filter]="true">
+      <mdc-chip-set filter>
         <mdc-chip>
           <mdc-chip-icon leading>face</mdc-chip-icon>
           <mdc-chip-text>Alice</mdc-chip-text>
@@ -223,6 +253,26 @@
         </mdc-chip>
         <mdc-chip>
           <mdc-chip-icon leading>directions</mdc-chip-icon>
+          <mdc-chip-text>Get Directions</mdc-chip-text>
+        </mdc-chip>
+      </mdc-chip-set>
+    </div>
+  </div>
+
+  <div class="demo-content">
+    <h3 class="demo-content__headline">Custom Theme</h3>
+    <div class="demo-content--row">
+      <mdc-chip-set>
+        <mdc-chip class="custom-chip-secondary">
+          <mdc-chip-text>Turn on lights</mdc-chip-text>
+        </mdc-chip>
+        <mdc-chip class="custom-chip-secondary">
+          <mdc-chip-text>Bookmark</mdc-chip-text>
+        </mdc-chip>
+        <mdc-chip class="custom-chip-secondary">
+          <mdc-chip-text>Set alarm</mdc-chip-text>
+        </mdc-chip>
+        <mdc-chip class="custom-chip-secondary">
           <mdc-chip-text>Get Directions</mdc-chip-text>
         </mdc-chip>
       </mdc-chip-set>
